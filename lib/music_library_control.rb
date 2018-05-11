@@ -62,9 +62,10 @@ class MusicLibraryController
   def play_song
     puts ("Which song number would you like to play?")
     input = gets.chomp
-    songs = Song.all.sort_by {|song| song.name}
-    binding.pry
-    songs.each_with_index {|song, index| puts "Playing #{song.name} by #{song.artist.name}" if index+1 == input}
+    if input.to_i <= Song.all.length && input.to_i > 0
+        songs = Song.all.sort_by {|song| song.name}
+        songs.each_with_index {|song, index| puts "Playing #{song.name} by #{song.artist.name}" if index+1 == input}
+    end
   end
 
 
